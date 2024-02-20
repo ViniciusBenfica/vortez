@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
@@ -51,6 +52,9 @@ export default function Members() {
           )}
         </View>
       ))}
+      <Link href='play'>
+        <Button title='Começar partida' color='#ff4444' />
+      </Link>
     </ScrollView>
   );
 }

@@ -26,9 +26,9 @@ export default function Players() {
             style={styles.input}
             onChangeText={(text) => updatePlayer(text, index)}
             value={player}
-            placeholder={`Jogador ${index + 1}`}
+            placeholder={`Novo jogador`}
           />
-          {players.length > 1 && player !== '' && (
+          {players.length - 1 !== index && (
             <Button
               title='Remover'
               onPress={() => removePlayer(index)}
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    flex: 1, // Permite que o input ocupe a maior parte do espaço horizontal
+    flex: 1,
     height: 40,
     margin: 12,
     borderWidth: 1,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   playerContainer: {
-    flexDirection: 'row', // Posiciona o input e o botão lado a lado
+    flexDirection: 'row',
     alignItems: 'center',
     width: '90%',
   },

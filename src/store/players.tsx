@@ -5,23 +5,28 @@ interface IPlayers {
   updatePlayer: (text: string, index: number) => void;
   removePlayer: (index: number) => void;
   addPlayer: () => void;
+  randomPlayer: string;
+  setRandomPlayer: () => void;
 }
 
 export const useStore = create<IPlayers>((set) => ({
   players: [''],
+  randomPlayer: '',
   updatePlayer: (text: string, index: number) => {
     set((oldState) => {
-      const newPlayers = [...oldState.players];
-      newPlayers[index] = text;
-      return { players: newPlayers };
+      if (text === '') {
+        const newPlayers = oldState.players.filter((_, i) => i !== index);
+        return { players: newPlayers };
+      } else {
+        const newPlayers = [...oldState.players];
+        newPlayers[index] = text;
+        return { players: newPlayers };
+      }
     });
   },
   removePlayer: (index: number) => {
     set((oldState) => {
       const newPlayers = oldState.players.filter((_, i) => i !== index);
-      if (newPlayers.length === 0) {
-        newPlayers.push('');
-      }
       return { players: newPlayers };
     });
   },
@@ -31,6 +36,13 @@ export const useStore = create<IPlayers>((set) => ({
         return { players: [...oldState.players, ''] };
       }
       return oldState;
+    });
+  },
+  setRandomPlayer: () => {
+    set((oldState) => {
+      const randomPlayer =
+        oldState.players[Math.floor(Math.random() * oldState.players.length)];
+      return { randomPlayer: randomPlayer };
     });
   },
 }));

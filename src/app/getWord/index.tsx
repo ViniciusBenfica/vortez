@@ -6,14 +6,14 @@ import { StyleSheet, Text, ScrollView, Button } from 'react-native';
 
 export default function GetWord() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { setRandomPlayer, randomPlayer, players } = useStorePlayer();
+  const { getRandomPlayer, randomPlayer, players } = useStorePlayer();
   const [wordIsVisible, setWordIsVisible] = useState(false);
   const [food] = useState(
     foodsName[Math.floor(Math.random() * foodsName.length)],
   );
 
   useEffect(() => {
-    setRandomPlayer();
+    getRandomPlayer();
   }, []);
 
   const showWord = () => {

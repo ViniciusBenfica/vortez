@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
+import { router } from 'expo-router';
 import { useStorePlayer } from '@/src/store/players';
 import { foodsQuestions } from '@/src/questions/foods';
 
@@ -22,8 +23,12 @@ export default function Questions() {
   }, []);
 
   const nextQuestion = () => {
-    getRandomQuestion();
-    setCurrentIndex((oldIndex) => ++oldIndex);
+    if (players.length - 1 === currentIndex + 1) {
+      router.push('/votes/');
+    } else {
+      getRandomQuestion();
+      setCurrentIndex((oldIndex) => ++oldIndex);
+    }
   };
 
   return (

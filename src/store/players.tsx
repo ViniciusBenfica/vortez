@@ -6,7 +6,7 @@ interface IPlayers {
   removePlayer: (index: number) => void;
   addPlayer: () => void;
   randomPlayer: string;
-  setRandomPlayer: () => void;
+  getRandomPlayer: () => void;
 }
 
 export const useStorePlayer = create<IPlayers>((set) => ({
@@ -38,11 +38,11 @@ export const useStorePlayer = create<IPlayers>((set) => ({
       return oldState;
     });
   },
-  setRandomPlayer: () => {
+  getRandomPlayer: () => {
     set((oldState) => {
       const randomPlayer =
         oldState.players[
-          Math.floor(Math.random() * oldState.players.length - 1)
+          Math.floor(Math.random() * (oldState.players.length - 1))
         ];
       return { randomPlayer: randomPlayer };
     });

@@ -1,4 +1,4 @@
-import { useStore } from '@/src/store/players';
+import { useStorePlayer } from '@/src/store/players';
 import { Link } from 'expo-router';
 import React, { useEffect } from 'react';
 import {
@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 export default function Players() {
-  const { players, updatePlayer, removePlayer, addPlayer } = useStore();
+  const { players, updatePlayer, removePlayer, addPlayer } = useStorePlayer();
 
   useEffect(() => {
     addPlayer();

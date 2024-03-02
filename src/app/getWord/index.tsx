@@ -1,12 +1,12 @@
 import { foodsName } from '@/src/questions/foods';
-import { useStore } from '@/src/store/players';
+import { useStorePlayer } from '@/src/store/players';
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, ScrollView, Button } from 'react-native';
 
 export default function GetWord() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { setRandomPlayer, randomPlayer, players } = useStore();
+  const { setRandomPlayer, randomPlayer, players } = useStorePlayer();
   const [wordIsVisible, setWordIsVisible] = useState(false);
   const [food] = useState(
     foodsName[Math.floor(Math.random() * foodsName.length)],
@@ -25,7 +25,7 @@ export default function GetWord() {
     setCurrentIndex((prevIndex) => {
       const nextIndex = ++prevIndex;
       if (nextIndex === players.length - 1) {
-        router.push('/');
+        router.push('/questions/');
         return 0;
       } else {
         return nextIndex;
@@ -39,9 +39,11 @@ export default function GetWord() {
 
       {wordIsVisible && (
         <Text>
-          {players[currentIndex] !== randomPlayer
-            ? food
-            : 'Você não sabe a palavra'}
+          {players[currentIndex] !== randomPlayer ? (
+            <Text>A palavra é {food}</Text>
+          ) : (
+            <Text>Você não sabe a palavra</Text>
+          )}
         </Text>
       )}
 

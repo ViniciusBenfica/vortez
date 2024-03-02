@@ -21,16 +21,12 @@ export default function GetWord() {
   };
 
   const goToNextPlayer = () => {
-    setWordIsVisible(false);
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = ++prevIndex;
-      if (nextIndex === players.length - 1) {
-        router.push('/questions/');
-        return 0;
-      } else {
-        return nextIndex;
-      }
-    });
+    if (currentIndex + 1 === players.length - 1) {
+      router.push('/questions/');
+    } else {
+      setWordIsVisible(false);
+      setCurrentIndex((prevIndex) => ++prevIndex);
+    }
   };
 
   return (

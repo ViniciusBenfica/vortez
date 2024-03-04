@@ -14,8 +14,10 @@ export default function Players() {
   const { players, updatePlayer, removePlayer, addPlayer } = useStorePlayer();
 
   useEffect(() => {
-    addPlayer();
-  }, [players, addPlayer]);
+    if (players[players.length - 1].name !== '') {
+      addPlayer();
+    }
+  }, [players[players.length - 1].name]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -25,7 +27,7 @@ export default function Players() {
           <TextInput
             style={styles.input}
             onChangeText={(text) => updatePlayer(text, index)}
-            value={player}
+            value={player.name}
             placeholder={`Novo jogador`}
           />
           {players.length - 1 !== index && (

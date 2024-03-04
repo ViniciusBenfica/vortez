@@ -33,7 +33,7 @@ export default function Questions() {
 
   return (
     <View style={styles.container}>
-      <Text>Pergunta para {players[currentIndex]}</Text>
+      <Text>Pergunta para {players[currentIndex].name}</Text>
       <Text>{currentQuestion}</Text>
       <Button title='Próxima' onPress={nextQuestion} />
     </View>

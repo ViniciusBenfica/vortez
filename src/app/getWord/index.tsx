@@ -31,11 +31,11 @@ export default function GetWord() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text>{players[currentIndex]}</Text>
+      <Text>{players[currentIndex].name}</Text>
 
       {wordIsVisible && (
         <Text>
-          {players[currentIndex] !== randomPlayer ? (
+          {players[currentIndex].name !== randomPlayer ? (
             <Text>A palavra é {food}</Text>
           ) : (
             <Text>Você não sabe a palavra</Text>
@@ -47,7 +47,7 @@ export default function GetWord() {
         <Button title={`Ok`} onPress={() => goToNextPlayer()}></Button>
       ) : (
         <Button
-          title={`Eu sou o ${players[currentIndex]}`}
+          title={`Eu sou o ${players[currentIndex].name}`}
           onPress={() => showWord()}
         ></Button>
       )}

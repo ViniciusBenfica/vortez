@@ -8,6 +8,7 @@ interface IPlayers {
   randomPlayer: string;
   getRandomPlayer: () => void;
   votedPlayer: (index: number) => void;
+  clearVotes: () => void;
 }
 
 export const useStorePlayer = create<IPlayers>((set) => ({
@@ -59,6 +60,15 @@ export const useStorePlayer = create<IPlayers>((set) => ({
           Math.floor(Math.random() * (oldState.players.length - 1))
         ].name;
       return { randomPlayer: randomPlayer };
+    });
+  },
+  clearVotes: () => {
+    set((oldState) => {
+      const newPlayers = oldState.players.map((player) => ({
+        ...player,
+        votes: 0,
+      }));
+      return { ...oldState, players: newPlayers };
     });
   },
 }));

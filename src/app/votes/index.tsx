@@ -6,7 +6,7 @@ import { StyleSheet, Text, ScrollView, Button, View } from 'react-native';
 export default function Vots() {
   const [startVotes, setStartVotes] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { players } = useStorePlayer();
+  const { players, votedPlayer } = useStorePlayer();
 
   return (
     <View style={styles.container}>
@@ -22,7 +22,7 @@ export default function Vots() {
         </View>
       ) : (
         <View style={styles.container}>
-          <Text>{players[currentIndex]}</Text>
+          <Text>{players[currentIndex].name}</Text>
           <ScrollView>
             <Text>Quem não sabe a palavra?</Text>
             {players.slice(0, -1).map((player, index) => {
@@ -30,12 +30,12 @@ export default function Vots() {
                 return (
                   <Button
                     key={index}
-                    title={player}
+                    title={player.name}
                     onPress={() => {
+                      votedPlayer(index);
+                      setCurrentIndex((oldIndex) => ++oldIndex);
                       if (currentIndex + 1 === players.length - 1) {
                         router.push('/result/');
-                      } else {
-                        setCurrentIndex((oldIndex) => ++oldIndex);
                       }
                     }}
                   />

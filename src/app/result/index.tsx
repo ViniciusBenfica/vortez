@@ -1,7 +1,25 @@
-import { StyleSheet, View } from 'react-native';
+import { useStorePlayer } from '@/src/store/players';
+import { Link } from 'expo-router';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function Result() {
-  return <View style={styles.container}></View>;
+  const { players, clearVotes } = useStorePlayer();
+
+  return (
+    <View style={styles.container}>
+      <Text>
+        O mais votado foi{' '}
+        {
+          players.reduce((prev, current) =>
+            prev.votes > current.votes ? prev : current,
+          ).name
+        }
+      </Text>
+      <Link href='/' asChild>
+        <Button title='Jogar novamente' onPress={clearVotes} color='#ff4444' />
+      </Link>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

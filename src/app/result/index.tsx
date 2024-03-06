@@ -3,7 +3,7 @@ import { Link } from 'expo-router';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function Result() {
-  const { players, clearVotes } = useStorePlayer();
+  const { players, clearVotes, randomPlayer } = useStorePlayer();
 
   return (
     <View style={styles.container}>
@@ -15,6 +15,7 @@ export default function Result() {
           ).name
         }
       </Text>
+      <Text>O jogador que não sabia a palavra é {randomPlayer}</Text>
       <Link href='/' asChild>
         <Button title='Jogar novamente' onPress={clearVotes} color='#ff4444' />
       </Link>

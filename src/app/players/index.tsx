@@ -22,23 +22,25 @@ export default function Players() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Adicione os jogadores</Text>
-      {players.map((player, index) => (
-        <View key={index} style={styles.playerContainer}>
-          <TextInput
-            style={styles.input}
-            onChangeText={(text) => updatePlayer(text, index)}
-            value={player.name}
-            placeholder={`Novo jogador`}
-          />
-          {players.length - 1 !== index && (
-            <Button
-              title='Remover'
-              onPress={() => removePlayer(index)}
-              color='#ff4444'
+      <ScrollView style={styles.playerContainer}>
+        {players.map((player, index) => (
+          <View key={index} style={styles.playerRow}>
+            <TextInput
+              style={styles.input}
+              onChangeText={(text) => updatePlayer(text, index)}
+              value={player.name}
+              placeholder={`Novo jogador`}
             />
-          )}
-        </View>
-      ))}
+            {players.length - 1 !== index && (
+              <Button
+                title='Remover'
+                onPress={() => removePlayer(index)}
+                color='#ff4444'
+              />
+            )}
+          </View>
+        ))}
+      </ScrollView>
       <Link href='/getWord/' asChild>
         <Button title='Começar partida' color='#ff4444' />
       </Link>
@@ -50,8 +52,12 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 20,
+    justifyContent: 'space-around',
+    paddingVertical: 50,
+  },
+  playerContainer: {
+    width: '100%',
+    height: 0,
   },
   title: {
     fontSize: 20,
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     padding: 10,
   },
-  playerContainer: {
+  playerRow: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '90%',

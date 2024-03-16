@@ -1,28 +1,39 @@
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { BebasNeue_400Regular, useFonts } from "@expo-google-fonts/bebas-neue";
+import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 
-export { ErrorBoundary } from 'expo-router';
+export { ErrorBoundary } from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  useEffect(() => {
-    SplashScreen.hideAsync();
-  }, []);
+	const [fontsLoaded] = useFonts({
+		BebasNeue_400Regular,
+	});
 
-  return <RootLayoutNav />;
+	useEffect(() => {
+		if (fontsLoaded) {
+			SplashScreen.hideAsync();
+		}
+	}, [fontsLoaded]);
+
+	if (!fontsLoaded) {
+		return null;
+	}
+
+	return <RootLayoutNav />;
 }
 
 function RootLayoutNav() {
-  return (
-    <Stack>
-      <Stack.Screen name='index' options={{ headerShown: false }} />
-      <Stack.Screen name='players/index' options={{ headerShown: false }} />
-      <Stack.Screen name='getWord/index' options={{ headerShown: false }} />
-      <Stack.Screen name='questions/index' options={{ headerShown: false }} />
-      <Stack.Screen name='votes/index' options={{ headerShown: false }} />
-      <Stack.Screen name='result/index' options={{ headerShown: false }} />
-    </Stack>
-  );
+	return (
+		<Stack>
+			<Stack.Screen name="index" options={{ headerShown: false }} />
+			<Stack.Screen name="players/index" options={{ headerShown: false }} />
+			<Stack.Screen name="getWord/index" options={{ headerShown: false }} />
+			<Stack.Screen name="questions/index" options={{ headerShown: false }} />
+			<Stack.Screen name="votes/index" options={{ headerShown: false }} />
+			<Stack.Screen name="result/index" options={{ headerShown: false }} />
+		</Stack>
+	);
 }

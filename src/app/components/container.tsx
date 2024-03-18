@@ -21,7 +21,7 @@ export default function ContainerComponent({
 				/>
 			</View>
 			<View style={styles.body}>
-				<View>{children}</View>
+				{children}
 				<View style={styles.footerButton}>
 					<ButtonComponent
 						action={actionFooterButton}

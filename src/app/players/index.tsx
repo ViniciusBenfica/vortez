@@ -1,16 +1,9 @@
+import InputComponent from "@/src/app/components/input";
 import { useStorePlayer } from "@/src/store/players";
-import { Link } from "expo-router";
+import { router } from "expo-router";
 import React, { useEffect } from "react";
-import {
-	Button,
-	Image,
-	ScrollView,
-	StyleSheet,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import ContainerComponent from "../components/container";
 
 export default function Players() {
 	const { players, updatePlayer, removePlayer, addPlayer } = useStorePlayer();
@@ -22,78 +15,55 @@ export default function Players() {
 	}, [players[players.length - 1].name]);
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Adicione os jogadores</Text>
-			<ScrollView style={styles.playerContainer}>
-				{players.map((player, index) => (
-					<View key={index} style={styles.playerRow}>
-						<View style={styles.inputContainer}>
-							<TextInput
-								style={styles.input}
-								onChangeText={(text) => updatePlayer(text, index)}
-								value={player.name}
-								placeholder={"Novo jogador"}
-							/>
-							{players.length - 1 !== index && (
-								<TouchableOpacity onPress={() => removePlayer(index)}>
-									<Image
-										style={styles.icon}
-										source={require("../../../assets/icons/bin.png")}
-									/>
-								</TouchableOpacity>
+		<ContainerComponent
+			actionFooterButton={() => router.push("/getWord/")}
+			textFooterButton="Começar"
+		>
+			<View style={styles.container}>
+				<Text style={styles.title}>Lista de jogadores</Text>
+				<ScrollView style={styles.playerContainer}>
+					{players.map((player, index) => (
+						<View key={index} style={styles.playerRow}>
+							{players.length - 1 === index ? (
+								<InputComponent
+									placeholder={"Novo jogador"}
+									value={player.name}
+									onChangeText={(text) => updatePlayer(text, index)}
+								/>
+							) : (
+								<InputComponent
+									value={player.name}
+									onChangeText={(text) => updatePlayer(text, index)}
+									onPressIcon={() => removePlayer(index)}
+									icon={require("../../../assets/icons/bin.svg")}
+								/>
 							)}
 						</View>
-					</View>
-				))}
-			</ScrollView>
-			<Link href="/getWord/" asChild>
-				<Button title="Começar partida" color="#ff4444" />
-			</Link>
-		</View>
+					))}
+				</ScrollView>
+			</View>
+		</ContainerComponent>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
 		alignItems: "center",
+		height: "100%",
 		justifyContent: "space-around",
-		paddingVertical: 50,
-		flex: 1,
+	},
+	title: {
+		fontFamily: "BebasNeue_400Regular",
+		fontSize: 48,
+		color: "white",
 	},
 	playerContainer: {
 		width: "100%",
 	},
-	inputContainer: {
-		flex: 1,
-		display: "flex",
-		flexDirection: "row",
-		alignItems: "center",
-		justifyContent: "space-between",
-		borderWidth: 2,
-		borderColor: "#9966cc",
-		padding: 10,
-		borderRadius: 10,
-	},
-	icon: {
-		width: 20,
-		height: 20,
-	},
-	title: {
-		fontSize: 20,
-		fontWeight: "bold",
-		marginBottom: 20,
-	},
-	input: {
-		width: "90%",
-		height: 40,
-		// margin: 12,
-	},
 	playerRow: {
-		flexDirection: "row",
+		display: "flex",
+		flexDirection: "column",
 		alignItems: "center",
-		justifyContent: "center",
-		width: "90%",
-		alignSelf: "center",
-		marginVertical: 10,
+		marginBottom: 16,
 	},
 });

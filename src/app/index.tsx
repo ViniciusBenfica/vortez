@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { Image, StyleSheet, View } from "react-native";
-import ButtonComponent from "../components/button";
+import ButtonComponent from "./components/button";
 
 export default function App() {
 	return (

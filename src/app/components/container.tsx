@@ -22,7 +22,7 @@ export default function ContainerComponent({
 			</View>
 			<View style={styles.body}>
 				{children}
-				<View style={styles.footerButton}>
+				<View>
 					<ButtonComponent
 						action={actionFooterButton}
 						text={textFooterButton}
@@ -37,17 +37,18 @@ const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		height: "100%",
+		backgroundColor: "#01386B",
 	},
 	containerImage: {
+		width: "100%",
+		height: "100%",
 		position: "absolute",
 		alignItems: "center",
 		justifyContent: "center",
-		width: "100%",
-		backgroundColor: "#01386B",
 	},
 	body: {
 		height: "80%",
-		width: "100%",
+		width: "90%",
 		justifyContent: "space-between",
 		margin: "auto",
 	},
@@ -55,8 +56,5 @@ const styles = StyleSheet.create({
 		opacity: 0.1,
 		transform: [{ rotate: "-15deg" }],
 		zIndex: -1,
-	},
-	footerButton: {
-		alignItems: "center",
 	},
 });

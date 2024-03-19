@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 		borderColor: "#D59018",
 		borderWidth: 5,
 		borderRadius: 12,
-		width: "90%",
+		width: "100%",
 	},
 	input: {
 		textAlign: "center",

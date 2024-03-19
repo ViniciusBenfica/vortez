@@ -1,50 +1,80 @@
-import { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
-import { router } from 'expo-router';
-import { useStorePlayer } from '@/src/store/players';
-import { foodsQuestions } from '@/src/questions/foods';
+import { foodsQuestions } from "@/src/questions/foods";
+import { useStorePlayer } from "@/src/store/players";
+import { router } from "expo-router";
+import { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import ContainerComponent from "../components/container";
 
 export default function Questions() {
-  const { players } = useStorePlayer();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [questions, setQuestions] = useState([...foodsQuestions]);
-  const [currentQuestion, setCurrentQuestion] = useState('');
+	const { players } = useStorePlayer();
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [questions, setQuestions] = useState([...foodsQuestions]);
+	const [currentQuestion, setCurrentQuestion] = useState("");
 
-  const getRandomQuestion = () => {
-    const initialQuestionIndex = Math.floor(Math.random() * questions.length);
-    setQuestions(
-      questions.filter((_, index) => index !== initialQuestionIndex),
-    );
-    setCurrentQuestion(questions[initialQuestionIndex]);
-  };
+	const getRandomQuestion = () => {
+		const initialQuestionIndex = Math.floor(Math.random() * questions.length);
+		setQuestions(
+			questions.filter((_, index) => index !== initialQuestionIndex),
+		);
+		setCurrentQuestion(questions[initialQuestionIndex]);
+	};
 
-  useEffect(() => {
-    getRandomQuestion();
-  }, []);
+	useEffect(() => {
+		getRandomQuestion();
+	}, []);
 
-  const nextQuestion = () => {
-    if (players.length - 1 === currentIndex + 1) {
-      router.push('/votes/');
-    } else {
-      getRandomQuestion();
-      setCurrentIndex((oldIndex) => ++oldIndex);
-    }
-  };
+	const nextQuestion = () => {
+		if (players.length - 1 === currentIndex + 1) {
+			router.push("/votes/");
+		} else {
+			getRandomQuestion();
+			setCurrentIndex((oldIndex) => ++oldIndex);
+		}
+	};
 
-  return (
-    <View style={styles.container}>
-      <Text>Pergunta para {players[currentIndex].name}</Text>
-      <Text>{currentQuestion}</Text>
-      <Button title='Próxima' onPress={nextQuestion} />
-    </View>
-  );
+	return (
+		<ContainerComponent
+			actionFooterButton={nextQuestion}
+			textFooterButton="Próxima"
+		>
+			<View style={styles.container}>
+				<Text style={styles.title}>Pergunta para</Text>
+				<Text style={styles.title}>{players[currentIndex].name}</Text>
+				<View style={styles.containerWord}>
+					<View style={styles.word}>{currentQuestion}</View>
+				</View>
+			</View>
+		</ContainerComponent>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 20,
-  },
+	container: {
+		alignItems: "center",
+		height: "60%",
+		justifyContent: "space-between",
+	},
+	title: {
+		fontFamily: "BebasNeue_400Regular",
+		fontSize: 48,
+		color: "white",
+	},
+	containerWord: {
+		width: "100%",
+		alignItems: "center",
+	},
+	word: {
+		fontFamily: "BebasNeue_400Regular",
+		alignItems: "center",
+		justifyContent: "center",
+		textAlign: "center",
+		color: "#FFFFFF",
+		fontSize: 40,
+		backgroundColor: "#ffffff26",
+		borderColor: "#FFFFFF",
+		borderWidth: 2,
+		borderRadius: 12,
+		padding: 10,
+		width: "70%",
+	},
 });

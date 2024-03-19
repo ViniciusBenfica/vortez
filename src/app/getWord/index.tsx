@@ -70,6 +70,10 @@ const styles = StyleSheet.create({
 		fontSize: 48,
 		color: "white",
 	},
+	containerWord: {
+		width: "100%",
+		alignItems: "center",
+	},
 	word: {
 		fontFamily: "BebasNeue_400Regular",
 		alignItems: "center",
@@ -82,9 +86,5 @@ const styles = StyleSheet.create({
 		borderRadius: 12,
 		width: "70%",
 		height: 90,
-	},
-	containerWord: {
-		width: "100%",
-		alignItems: "center",
 	},
 });

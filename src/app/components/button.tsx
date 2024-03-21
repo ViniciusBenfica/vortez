@@ -3,12 +3,24 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 interface IButtonProps {
 	action: () => void;
 	text: string;
+	selected?: boolean;
 }
 
-export default function ButtonComponent({ action, text }: IButtonProps) {
+export default function ButtonComponent({
+	action,
+	text,
+	selected,
+}: IButtonProps) {
 	return (
-		<TouchableOpacity onPress={action} style={styles.button}>
-			<Text style={styles.buttonText}>{text}</Text>
+		<TouchableOpacity
+			onPress={action}
+			style={[styles.button, selected ? styles.selectedButton : null]}
+		>
+			<Text
+				style={[styles.buttonText, selected ? styles.selectedTuttonText : null]}
+			>
+				{text}
+			</Text>
 		</TouchableOpacity>
 	);
 }
@@ -28,5 +40,13 @@ const styles = StyleSheet.create({
 		fontSize: 64,
 		color: "#D59018",
 		fontFamily: "BebasNeue_400Regular",
+	},
+	selectedTuttonText: {
+		color: "white",
+	},
+	selectedButton: {
+		color: "#fff",
+		backgroundColor: "#D59018",
+		borderColor: "#fff",
 	},
 });

@@ -5,12 +5,14 @@ type IContainerProps = {
 	children: React.ReactNode;
 	actionFooterButton: () => void;
 	textFooterButton: string;
+	showFooterButton?: boolean;
 };
 
 export default function ContainerComponent({
 	children,
 	actionFooterButton,
 	textFooterButton,
+	showFooterButton = true,
 }: IContainerProps) {
 	return (
 		<View style={styles.container}>
@@ -22,12 +24,14 @@ export default function ContainerComponent({
 			</View>
 			<View style={styles.body}>
 				{children}
-				<View>
-					<ButtonComponent
-						action={actionFooterButton}
-						text={textFooterButton}
-					/>
-				</View>
+				{showFooterButton && (
+					<View>
+						<ButtonComponent
+							action={actionFooterButton}
+							text={textFooterButton}
+						/>
+					</View>
+				)}
 			</View>
 		</View>
 	);

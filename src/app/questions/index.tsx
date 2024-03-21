@@ -39,9 +39,11 @@ export default function Questions() {
 		>
 			<View style={styles.container}>
 				<Text style={styles.title}>Pergunta para</Text>
-				<Text style={styles.title}>{players[currentIndex].name}</Text>
-				<View style={styles.containerWord}>
-					<View style={styles.word}>{currentQuestion}</View>
+				<View style={styles.playerAndQuestion}>
+					<Text style={styles.title}>{players[currentIndex].name}</Text>
+					<View style={styles.containerQuestion}>
+						<View style={styles.question}>{currentQuestion}</View>
+					</View>
 				</View>
 			</View>
 		</ContainerComponent>
@@ -59,11 +61,17 @@ const styles = StyleSheet.create({
 		fontSize: 48,
 		color: "white",
 	},
-	containerWord: {
+	playerAndQuestion: {
+		alignItems: "center",
+		justifyContent: "flex-start",
+		width: "100%",
+		height: "50%",
+	},
+	containerQuestion: {
 		width: "100%",
 		alignItems: "center",
 	},
-	word: {
+	question: {
 		fontFamily: "BebasNeue_400Regular",
 		alignItems: "center",
 		justifyContent: "center",

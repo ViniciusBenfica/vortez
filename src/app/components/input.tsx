@@ -10,9 +10,10 @@ import {
 interface IInputProps {
 	placeholder?: string;
 	value: string;
-	onChangeText: (text: string) => void;
+	onChangeText?: (text: string) => void;
 	icon?: ImageSourcePropType;
 	onPressIcon?: () => void;
+	editable?: boolean;
 }
 
 export default function InputComponent({
@@ -21,12 +22,13 @@ export default function InputComponent({
 	onChangeText,
 	icon,
 	onPressIcon,
+	editable = true,
 }: IInputProps) {
 	return (
 		<View style={styles.inputContainer}>
 			<TextInput
 				style={styles.input}
-				onChangeText={onChangeText}
+				onChangeText={onChangeText ? (text) => onChangeText(text) : undefined}
 				value={value}
 				placeholder={placeholder || ""}
 				placeholderTextColor="#A5A5A5"

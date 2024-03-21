@@ -3,7 +3,7 @@ import { useStorePlayer } from "@/src/store/players";
 import { router } from "expo-router";
 import React, { useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import ContainerComponent from "../components/container";
+import ContainerComponent from "../../components/container";
 
 export default function Players() {
 	const { players, updatePlayer, removePlayer, addPlayer } = useStorePlayer();
@@ -16,7 +16,7 @@ export default function Players() {
 
 	return (
 		<ContainerComponent
-			actionFooterButton={() => router.push("/getWord/")}
+			actionFooterButton={() => router.push("/pages/getWord/")}
 			textFooterButton="Começar"
 		>
 			<View style={styles.container}>
@@ -35,7 +35,7 @@ export default function Players() {
 									value={player.name}
 									onChangeText={(text) => updatePlayer(text, index)}
 									onPressIcon={() => removePlayer(index)}
-									icon={require("../../../assets/icons/bin.svg")}
+									icon={require("../../../../assets/icons/bin.svg")}
 								/>
 							)}
 						</View>

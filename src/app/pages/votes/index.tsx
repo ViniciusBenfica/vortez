@@ -2,8 +2,8 @@ import { useStorePlayer } from "@/src/store/players";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import ButtonComponent from "../components/button";
-import ContainerComponent from "../components/container";
+import ButtonComponent from "../../components/button";
+import ContainerComponent from "../../components/container";
 
 export default function Vots() {
 	const [selectedPlayerIndex, setSelectedPlayerIndex] = useState<number>(-1);
@@ -17,7 +17,7 @@ export default function Vots() {
 				setCurrentIndex((oldIndex) => ++oldIndex);
 				setSelectedPlayerIndex(-1);
 				if (currentIndex + 1 === players.length - 1) {
-					router.push("/result/");
+					router.push("/pages/result/");
 				}
 			}}
 			textFooterButton="Confirmar"

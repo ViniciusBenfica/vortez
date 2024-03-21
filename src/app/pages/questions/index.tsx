@@ -3,7 +3,7 @@ import { useStorePlayer } from "@/src/store/players";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import ContainerComponent from "../components/container";
+import ContainerComponent from "../../components/container";
 
 export default function Questions() {
 	const { players } = useStorePlayer();
@@ -25,7 +25,7 @@ export default function Questions() {
 
 	const nextQuestion = () => {
 		if (players.length - 1 === currentIndex + 1) {
-			router.push("/votes/");
+			router.push("/pages/votes/");
 		} else {
 			getRandomQuestion();
 			setCurrentIndex((oldIndex) => ++oldIndex);

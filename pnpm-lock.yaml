@@ -5,9 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@babel/runtime':
+    specifier: ^7.24.0
+    version: 7.24.0
+  '@expo-google-fonts/bebas-neue':
+    specifier: ^0.2.3
+    version: 0.2.3
   '@expo/vector-icons':
     specifier: ^14.0.0
     version: 14.0.0
+  '@react-native/assets-registry':
+    specifier: ^0.74.0
+    version: 0.74.0
   '@react-navigation/native':
     specifier: ^6.0.2
     version: 6.1.16(react-native@0.73.4)(react@18.2.0)
@@ -1722,6 +1731,10 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
+  /@expo-google-fonts/bebas-neue@0.2.3:
+    resolution: {integrity: sha512-FrFjb2gShHLM/XTL0nYcxRt4dHjbVPmg6HzcJRoIIVt+HJQU6Nbh7Nan8KeeEny8wQFDEVCdJATnofS5xaDxqA==}
+    dev: false
+
   /@expo/bunyan@4.0.0:
     resolution: {integrity: sha512-Ydf4LidRB/EBI+YrB+cVLqIseiRfjUI/AeHBgjGMtq3GroraDu81OV7zqophRgupngoL3iS3JUMDMnxO7g39qA==}
     engines: {'0': node >=0.10.0}
@@ -2637,6 +2650,11 @@ packages:
 
   /@react-native/assets-registry@0.73.1:
     resolution: {integrity: sha512-2FgAbU7uKM5SbbW9QptPPZx8N9Ke2L7bsHb+EhAanZjFZunA9PaYtyjUQ1s7HD+zDVqOQIvjkpXSv7Kejd2tqg==}
+    engines: {node: '>=18'}
+    dev: false
+
+  /@react-native/assets-registry@0.74.0:
+    resolution: {integrity: sha512-I8Yy6bCKU5R4qZX4jfXsAPsHyuGHlulbnbG3NqO9JgZ3T2DJxJiZE39rHORP0trLnRh0rIeRcs4Mc14fAE6hrw==}
     engines: {node: '>=18'}
     dev: false
 

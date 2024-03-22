@@ -5,30 +5,35 @@ import ButtonComponent from "./components/button";
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<View>
+			<View style={styles.body}>
 				<Image
 					source={require("../../assets/images/logo.webp")}
 					style={styles.image}
 				/>
+				<ButtonComponent
+					action={() => router.push("/pages/players/")}
+					text="Jogar"
+				/>
 			</View>
-			<ButtonComponent
-				action={() => router.push("/pages/players/")}
-				text="Jogar"
-			/>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
-		alignItems: "center",
-		backgroundColor: "#01386B",
-		height: "100%",
 		width: "100%",
-		justifyContent: "space-around",
+		height: "100%",
+		backgroundColor: "#01386B",
+	},
+	body: {
+		height: "80%",
+		width: "90%",
+		justifyContent: "space-between",
+		margin: "auto",
 	},
 	image: {
-		width: 300,
-		height: 300,
+		width: "100%",
+		height: "70%",
+		resizeMode: "contain",
 	},
 });

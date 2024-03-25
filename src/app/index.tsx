@@ -9,6 +9,7 @@ export default function App() {
 				<Image
 					source={require("../../assets/images/logo.webp")}
 					style={styles.image}
+					testID="logo-image"
 				/>
 				<ButtonComponent
 					action={() => router.push("/pages/players/")}

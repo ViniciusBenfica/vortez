@@ -1,5 +1,5 @@
-import InputComponent from "@/src/app/components/input";
-import { useStorePlayer } from "@/src/store/players";
+import InputComponent from "@/app/components/input";
+import { useStorePlayer } from "@/store/players";
 import { router } from "expo-router";
 import React, { useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";

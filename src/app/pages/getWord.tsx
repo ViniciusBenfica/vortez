@@ -1,5 +1,5 @@
-import { foodsName } from "@/src/questions/foods";
-import { useStorePlayer } from "@/src/store/players";
+import { foodsName } from "@/questions/foods";
+import { useStorePlayer } from "@/store/players";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";

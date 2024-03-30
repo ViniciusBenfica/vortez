@@ -1,4 +1,4 @@
-import { useStorePlayer } from "@/src/store/players";
+import { useStorePlayer } from "@/store/players";
 import { router } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import ContainerComponent from "../components/container";

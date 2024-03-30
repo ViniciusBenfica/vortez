@@ -1,8 +1,8 @@
 import { useStorePlayer } from "@/src/store/players";
-import { Link, router } from "expo-router";
-import { Button, StyleSheet, Text, View } from "react-native";
-import ContainerComponent from "../../components/container";
-import InputComponent from "../../components/input";
+import { router } from "expo-router";
+import { StyleSheet, Text, View } from "react-native";
+import ContainerComponent from "../components/container";
+import InputComponent from "../components/input";
 
 export default function Result() {
 	const { players, clearVotes, randomPlayer } = useStorePlayer();

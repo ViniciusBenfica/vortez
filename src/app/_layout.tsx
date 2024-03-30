@@ -29,23 +29,11 @@ function RootLayoutNav() {
 	return (
 		<Stack>
 			<Stack.Screen name="index" options={{ headerShown: false }} />
-			<Stack.Screen
-				name="pages/players/index"
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="pages/getWord/index"
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="pages/questions/index"
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen name="pages/votes/index" options={{ headerShown: false }} />
-			<Stack.Screen
-				name="pages/result/index"
-				options={{ headerShown: false }}
-			/>
+			<Stack.Screen name="pages/players" options={{ headerShown: false }} />
+			<Stack.Screen name="pages/getWord" options={{ headerShown: false }} />
+			<Stack.Screen name="pages/questions" options={{ headerShown: false }} />
+			<Stack.Screen name="pages/votes" options={{ headerShown: false }} />
+			<Stack.Screen name="pages/result" options={{ headerShown: false }} />
 		</Stack>
 	);
 }

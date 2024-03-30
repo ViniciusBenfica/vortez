@@ -12,7 +12,7 @@ export default function App() {
 					testID="logo-image"
 				/>
 				<ButtonComponent
-					action={() => router.push("/pages/players/")}
+					action={() => router.push("/pages/players")}
 					text="Jogar"
 				/>
 			</View>

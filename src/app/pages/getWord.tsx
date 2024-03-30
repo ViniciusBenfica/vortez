@@ -3,7 +3,7 @@ import { useStorePlayer } from "@/src/store/players";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import ContainerComponent from "../../components/container";
+import ContainerComponent from "../components/container";
 
 export default function GetWord() {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,7 +23,7 @@ export default function GetWord() {
 
 	const goToNextPlayer = () => {
 		if (currentIndex + 1 === players.length - 1) {
-			router.push("/pages/questions/");
+			router.push("/pages/questions");
 		} else {
 			setWordIsVisible(false);
 			setCurrentIndex((prevIndex) => ++prevIndex);

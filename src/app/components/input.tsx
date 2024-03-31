@@ -30,15 +30,13 @@ export default function InputComponent({
 				style={styles.input}
 				onChangeText={onChangeText ? (text) => onChangeText(text) : undefined}
 				value={value}
+				editable={editable}
 				placeholder={placeholder || ""}
 				placeholderTextColor="#A5A5A5"
 			/>
 			{icon && (
-				<TouchableOpacity style={styles.button} onPress={onPressIcon}>
-					<Image
-						style={styles.icon}
-						source={require("../../../assets/icons/bin.svg")}
-					/>
+				<TouchableOpacity style={styles.button} testID="input-icon" onPress={onPressIcon}>
+					<Image style={styles.icon} source={require("../../../assets/icons/bin.svg")} />
 				</TouchableOpacity>
 			)}
 		</View>

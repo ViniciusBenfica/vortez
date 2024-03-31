@@ -55,9 +55,7 @@ export const useStorePlayer = create<IPlayers>((set) => ({
 	getRandomPlayer: () => {
 		set((oldState) => {
 			const randomPlayer =
-				oldState.players[
-					Math.floor(Math.random() * (oldState.players.length - 1))
-				].name;
+				oldState.players[Math.floor(Math.random() * (oldState.players.length - 1))].name;
 			return { randomPlayer: randomPlayer };
 		});
 	},

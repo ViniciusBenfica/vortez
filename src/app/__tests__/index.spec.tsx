@@ -19,6 +19,6 @@ describe("Index", () => {
 		const { getByText } = render(<App />);
 		const button = getByText("Jogar");
 		fireEvent.press(button);
-		expect(router.push).toHaveBeenCalledWith("/pages/players/");
+		expect(router.push).toHaveBeenCalledWith("/pages/players");
 	});
 });

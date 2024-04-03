@@ -6,28 +6,25 @@ import React from "react";
 
 let mockPlayers = [{ id: 0, name: "", votes: 0 }];
 
-jest.mock("@/store/players", () => {
-	return {
+jest.mock("@/store/players", () => ({
+	useStorePlayer: () => ({
 		players: mockPlayers,
-		useStorePlayer: jest.fn(() => ({
-			players: mockPlayers,
-			updatePlayer: jest.fn((name, index) => {
-				mockPlayers[index].name = name;
-			}),
-			removePlayer: jest.fn((index) => {
-				mockPlayers = mockPlayers.filter((_, i) => i !== index);
-			}),
-			addPlayer: jest.fn(() => {
-				const newPlayer = {
-					id: mockPlayers[mockPlayers.length - 1].id + 1,
-					name: "",
-					votes: 0,
-				};
-				mockPlayers = [...mockPlayers, newPlayer];
-			}),
-		})),
-	};
-});
+		updatePlayer: jest.fn((name, index) => {
+			mockPlayers[index].name = name;
+		}),
+		removePlayer: jest.fn((index) => {
+			mockPlayers = mockPlayers.filter((_, i) => i !== index);
+		}),
+		addPlayer: jest.fn(() => {
+			const newPlayer = {
+				id: mockPlayers[mockPlayers.length - 1].id + 1,
+				name: "",
+				votes: 0,
+			};
+			mockPlayers = [...mockPlayers, newPlayer];
+		}),
+	}),
+}));
 
 jest.mock("expo-router", () => ({
 	router: {

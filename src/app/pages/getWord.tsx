@@ -9,9 +9,7 @@ export default function GetWord() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const { getRandomPlayer, randomPlayer, players } = useStorePlayer();
 	const [wordIsVisible, setWordIsVisible] = useState(false);
-	const [food] = useState(
-		foodsName[Math.floor(Math.random() * foodsName.length)],
-	);
+	const [food] = useState(foodsName[Math.floor(Math.random() * foodsName.length)]);
 
 	useEffect(() => {
 		getRandomPlayer();
@@ -32,13 +30,11 @@ export default function GetWord() {
 
 	return (
 		<ContainerComponent
-			actionFooterButton={
-				wordIsVisible ? () => goToNextPlayer() : () => showWord()
-			}
+			actionFooterButton={wordIsVisible ? () => goToNextPlayer() : () => showWord()}
 			textFooterButton={wordIsVisible ? "Continuar" : "Sim, sou eu!"}
 		>
 			<View style={styles.container}>
-				<Text style={styles.title}>Voce é o {players[currentIndex].name}?</Text>
+				<Text style={styles.title}>{`Voce é o ${players[currentIndex].name}?`}</Text>
 				{wordIsVisible && (
 					<>
 						{players[currentIndex].name !== randomPlayer ? (

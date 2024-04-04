@@ -37,17 +37,12 @@ export default function GetWord() {
 				<Text style={styles.title}>{`Voce é o ${players[currentIndex].name}?`}</Text>
 				{wordIsVisible && (
 					<>
-						{players[currentIndex].name !== randomPlayer ? (
-							<View style={styles.containerWord}>
-								<Text style={styles.title}>A palavra é</Text>
-								<View style={styles.word}>{food}</View>
-							</View>
-						) : (
-							<View style={styles.containerWord}>
-								<Text style={styles.title}>A palavra é</Text>
-								<View style={styles.word}>Não sabe</View>
-							</View>
-						)}
+						<View style={styles.containerWord}>
+							<Text style={styles.title}>A palavra é</Text>
+							<Text style={styles.word}>
+								{players[currentIndex].name !== randomPlayer ? food : "Não sabe"}
+							</Text>
+						</View>
 					</>
 				)}
 			</View>
@@ -77,6 +72,7 @@ const styles = StyleSheet.create({
 		color: "#FFFFFF",
 		fontSize: 64,
 		backgroundColor: "#ffffff26",
+		textAlign: "center",
 		borderColor: "#FFFFFF",
 		borderWidth: 2,
 		borderRadius: 12,

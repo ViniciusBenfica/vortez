@@ -17,19 +17,13 @@ export default function ContainerComponent({
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerImage}>
-				<Image
-					style={styles.image}
-					source={require("../../../assets/images/logo.webp")}
-				/>
+				<Image style={styles.image} source={require("../../../assets/images/logo.webp")} />
 			</View>
 			<View style={styles.body}>
 				{children}
 				{showFooterButton && (
 					<View>
-						<ButtonComponent
-							action={actionFooterButton}
-							text={textFooterButton}
-						/>
+						<ButtonComponent action={actionFooterButton} text={textFooterButton} />
 					</View>
 				)}
 			</View>

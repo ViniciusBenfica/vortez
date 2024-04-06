@@ -5,7 +5,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import ButtonComponent from "../components/button";
 import ContainerComponent from "../components/container";
 
-export default function Vots() {
+export default function Votes() {
 	const [selectedPlayerIndex, setSelectedPlayerIndex] = useState<number>(-1);
 	const [currentIndex, setCurrentIndex] = useState<number>(0);
 	const { players, votedPlayer } = useStorePlayer();
@@ -26,10 +26,7 @@ export default function Vots() {
 			<View style={styles.container}>
 				<Text style={styles.title}>{players[currentIndex].name}</Text>
 				<Text style={styles.title}>Quem não sabe a palavra?</Text>
-				<ScrollView
-					showsVerticalScrollIndicator={false}
-					style={styles.playerContainer}
-				>
+				<ScrollView showsVerticalScrollIndicator={false} style={styles.playerContainer}>
 					{players.slice(0, -1).map((player, index) => {
 						if (index !== currentIndex) {
 							return (

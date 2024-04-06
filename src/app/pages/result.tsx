@@ -21,9 +21,7 @@ export default function Result() {
 					<InputComponent
 						editable={false}
 						value={
-							players.reduce((prev, current) =>
-								prev.votes > current.votes ? prev : current,
-							).name
+							players.reduce((prev, current) => (prev.votes > current.votes ? prev : current)).name
 						}
 					/>
 				</View>

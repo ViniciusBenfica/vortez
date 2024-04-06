@@ -13,9 +13,7 @@ export default function Questions() {
 
 	const getRandomQuestion = () => {
 		const initialQuestionIndex = Math.floor(Math.random() * questions.length);
-		setQuestions(
-			questions.filter((_, index) => index !== initialQuestionIndex),
-		);
+		setQuestions(questions.filter((_, index) => index !== initialQuestionIndex));
 		setCurrentQuestion(questions[initialQuestionIndex]);
 	};
 
@@ -33,16 +31,13 @@ export default function Questions() {
 	};
 
 	return (
-		<ContainerComponent
-			actionFooterButton={nextQuestion}
-			textFooterButton="Próxima"
-		>
+		<ContainerComponent actionFooterButton={nextQuestion} textFooterButton="Próxima">
 			<View style={styles.container}>
 				<Text style={styles.title}>Pergunta para</Text>
 				<View style={styles.playerAndQuestion}>
 					<Text style={styles.title}>{players[currentIndex].name}</Text>
 					<View style={styles.containerQuestion}>
-						<View style={styles.question}>{currentQuestion}</View>
+						<Text style={styles.question}>{currentQuestion}</Text>
 					</View>
 				</View>
 			</View>

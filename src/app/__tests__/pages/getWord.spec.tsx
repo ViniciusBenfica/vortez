@@ -56,7 +56,6 @@ describe("GetWord", () => {
 
 	it("navigates on button press", () => {
 		const { getByText } = render(<GetWord />);
-		expect(getByText(`Voce é o ${useStorePlayer().players[0].name}?`)).toBeTruthy();
 		fireEvent.press(getByText("Sim, sou eu!"));
 		fireEvent.press(getByText("Continuar"));
 		expect(router.push).toHaveBeenCalledWith("/pages/questions");

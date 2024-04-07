@@ -6,21 +6,13 @@ interface IButtonProps {
 	selected?: boolean;
 }
 
-export default function ButtonComponent({
-	action,
-	text,
-	selected,
-}: IButtonProps) {
+export default function ButtonComponent({ action, text, selected }: IButtonProps) {
 	return (
 		<TouchableOpacity
 			onPress={action}
 			style={[styles.button, selected ? styles.selectedButton : null]}
 		>
-			<Text
-				style={[styles.buttonText, selected ? styles.selectedTuttonText : null]}
-			>
-				{text}
-			</Text>
+			<Text style={[styles.buttonText, selected ? styles.selectedTuttonText : null]}>{text}</Text>
 		</TouchableOpacity>
 	);
 }

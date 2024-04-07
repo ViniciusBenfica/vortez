@@ -1,5 +1,4 @@
 import Result from "@/app/pages/result";
-import { useStorePlayer } from "@/store/players";
 import { fireEvent, render } from "@testing-library/react-native";
 import { router } from "expo-router";
 import React from "react";

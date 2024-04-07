@@ -11,10 +11,7 @@ export default function App() {
 					style={styles.image}
 					testID="logo-image"
 				/>
-				<ButtonComponent
-					action={() => router.push("/pages/players")}
-					text="Jogar"
-				/>
+				<ButtonComponent action={() => router.push("/pages/players")} text="Jogar" />
 			</View>
 		</View>
 	);

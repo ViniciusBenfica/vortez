@@ -1,5 +1,6 @@
 {
-	"name": "game_mobile_template",
+	"name": "vortez",
+	"author": "Benfica",
 	"main": "expo-router/entry",
 	"version": "1.0.0",
 	"scripts": {

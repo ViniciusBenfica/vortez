@@ -36,7 +36,7 @@ export default function InputComponent({
 			/>
 			{icon && (
 				<TouchableOpacity style={styles.button} testID="input-icon" onPress={onPressIcon}>
-					<Image style={styles.icon} source={require("../../../assets/icons/bin.svg")} />
+					<Image style={styles.icon} source={icon} />
 				</TouchableOpacity>
 			)}
 		</View>

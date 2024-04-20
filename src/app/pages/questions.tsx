@@ -33,12 +33,12 @@ export default function Questions() {
 	return (
 		<ContainerComponent actionFooterButton={nextQuestion} textFooterButton="Próxima">
 			<View style={styles.container}>
-				<Text style={styles.title}>Pergunta para</Text>
-				<View style={styles.playerAndQuestion}>
+				<View style={styles.nameContainer}>
+					<Text style={styles.title}>Pergunta para</Text>
 					<Text style={styles.title}>{players[currentIndex].name}</Text>
-					<View style={styles.containerQuestion}>
-						<Text style={styles.question}>{currentQuestion}</Text>
-					</View>
+				</View>
+				<View style={styles.questionContainer}>
+					<Text style={styles.question}>{currentQuestion}</Text>
 				</View>
 			</View>
 		</ContainerComponent>
@@ -51,20 +51,19 @@ const styles = StyleSheet.create({
 		height: "60%",
 		justifyContent: "space-between",
 	},
+	nameContainer: {
+		alignItems: "center",
+	},
 	title: {
 		fontFamily: "BebasNeue_400Regular",
 		fontSize: 48,
 		color: "white",
 	},
-	playerAndQuestion: {
+	questionContainer: {
 		alignItems: "center",
 		justifyContent: "flex-start",
 		width: "100%",
 		height: "50%",
-	},
-	containerQuestion: {
-		width: "100%",
-		alignItems: "center",
 	},
 	question: {
 		fontFamily: "BebasNeue_400Regular",

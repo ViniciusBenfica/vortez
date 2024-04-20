@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		alignItems: "center",
 		justifyContent: "center",
+		overflow: "hidden",
 	},
 	body: {
 		height: "80%",

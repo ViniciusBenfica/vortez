@@ -40,10 +40,12 @@ export default function GetWord() {
 					<>
 						<View style={styles.containerWord}>
 							<Text style={styles.title}>A palavra é</Text>
-							<View style={styles.word}>
-								<TransparentButtonComponent
-									text={players[currentIndex].name !== randomPlayer ? food : "Não sabe"}
-								/>
+							<View style={styles.wordContainer}>
+								<TransparentButtonComponent>
+									<Text style={styles.word}>
+										{players[currentIndex].name !== randomPlayer ? food : "Não sabe"}
+									</Text>
+								</TransparentButtonComponent>
 							</View>
 						</View>
 					</>
@@ -69,8 +71,14 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		gap: 16,
 	},
-	word: {
+	wordContainer: {
 		width: "70%",
 		height: 90,
+	},
+	word: {
+		fontFamily: "BebasNeue_400Regular",
+		color: "#FFFFFF",
+		fontSize: 64,
+		textAlign: "center",
 	},
 });

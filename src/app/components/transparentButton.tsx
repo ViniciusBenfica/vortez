@@ -1,25 +1,19 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 interface IButtonProps {
 	action?: () => void;
-	text: string;
 	disable?: boolean;
-	selected?: boolean;
+	children: React.ReactNode;
 }
 
 export default function TransparentButtonComponent({
 	action,
-	text,
-	selected,
 	disable = true,
+	children,
 }: IButtonProps) {
 	return (
-		<TouchableOpacity
-			onPress={action}
-			style={[styles.button, selected ? styles.selectedButton : null]}
-			disabled={disable}
-		>
-			<Text style={styles.word}>{text}</Text>
+		<TouchableOpacity onPress={action} style={[styles.button]} disabled={disable}>
+			{children}
 		</TouchableOpacity>
 	);
 }
@@ -34,14 +28,5 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		width: "100%",
 		height: "100%",
-	},
-	selectedButton: {
-		backgroundColor: "red",
-	},
-	word: {
-		fontFamily: "BebasNeue_400Regular",
-		color: "#FFFFFF",
-		fontSize: 64,
-		textAlign: "center",
 	},
 });

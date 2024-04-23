@@ -30,6 +30,7 @@ function RootLayoutNav() {
 		<Stack>
 			<Stack.Screen name="index" options={{ headerShown: false }} />
 			<Stack.Screen name="pages/players" options={{ headerShown: false }} />
+			<Stack.Screen name="pages/theme" options={{ headerShown: false }} />
 			<Stack.Screen name="pages/getWord" options={{ headerShown: false }} />
 			<Stack.Screen name="pages/questions" options={{ headerShown: false }} />
 			<Stack.Screen name="pages/votes" options={{ headerShown: false }} />

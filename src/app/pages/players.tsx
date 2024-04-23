@@ -16,7 +16,7 @@ export default function Players() {
 
 	return (
 		<ContainerComponent
-			actionFooterButton={() => router.push("/pages/getWord")}
+			actionFooterButton={() => router.push("/pages/theme")}
 			textFooterButton="Começar"
 		>
 			<View style={styles.container}>

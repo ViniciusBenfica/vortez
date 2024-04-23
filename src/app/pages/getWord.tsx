@@ -4,6 +4,7 @@ import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import ContainerComponent from "../components/container";
+import TransparentButtonComponent from "../components/transparentButton";
 
 export default function GetWord() {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,9 +40,11 @@ export default function GetWord() {
 					<>
 						<View style={styles.containerWord}>
 							<Text style={styles.title}>A palavra é</Text>
-							<Text style={styles.word}>
-								{players[currentIndex].name !== randomPlayer ? food : "Não sabe"}
-							</Text>
+							<View style={styles.word}>
+								<TransparentButtonComponent
+									text={players[currentIndex].name !== randomPlayer ? food : "Não sabe"}
+								/>
+							</View>
 						</View>
 					</>
 				)}
@@ -64,18 +67,9 @@ const styles = StyleSheet.create({
 	containerWord: {
 		width: "100%",
 		alignItems: "center",
+		gap: 16,
 	},
 	word: {
-		fontFamily: "BebasNeue_400Regular",
-		alignItems: "center",
-		justifyContent: "center",
-		color: "#FFFFFF",
-		fontSize: 64,
-		backgroundColor: "#ffffff26",
-		textAlign: "center",
-		borderColor: "#FFFFFF",
-		borderWidth: 2,
-		borderRadius: 12,
 		width: "70%",
 		height: 90,
 	},

@@ -2,33 +2,39 @@ import { foodsName, foodsQuestions } from "./foods";
 
 export const theme = [
 	{
-		title: 'Comida',
+		title: "Comida",
 		theme: foodsName,
+		icon: require("../../assets/icons/food.png"),
 		questions: foodsQuestions,
 	},
 	{
-		title: 'Animal',
+		title: "Animal",
 		theme: foodsName,
+		icon: require("../../assets/icons/animal.png"),
 		questions: foodsQuestions,
 	},
 	{
-		title: 'Esportes',
+		title: "Esportes",
 		theme: foodsName,
+		icon: require("../../assets/icons/sport.png"),
 		questions: foodsQuestions,
 	},
 	{
-		title: 'Jogos',
+		title: "Jogos",
 		theme: foodsName,
+		icon: require("../../assets/icons/game.png"),
 		questions: foodsQuestions,
 	},
 	{
-		title: 'Música',
+		title: "Música",
 		theme: foodsName,
+		icon: require("../../assets/icons/music.png"),
 		questions: foodsQuestions,
 	},
 	{
-		title: 'Televisão',
+		title: "Televisão",
 		theme: foodsName,
+		icon: require("../../assets/icons/tv.png"),
 		questions: foodsQuestions,
 	},
-]
+];

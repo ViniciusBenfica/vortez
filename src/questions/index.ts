@@ -1,6 +1,14 @@
+import type { ImageSourcePropType } from "react-native";
 import { foodsName, foodsQuestions } from "./foods";
 
-export const theme = [
+export interface ITheme {
+	title: string;
+	theme: string[];
+	icon: ImageSourcePropType;
+	questions: string[];
+}
+
+export const theme: ITheme[] = [
 	{
 		title: "Comida",
 		theme: foodsName,

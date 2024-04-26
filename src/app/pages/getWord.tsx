@@ -1,5 +1,5 @@
-import { foodsName } from "@/questions/foods";
 import { useStorePlayer } from "@/store/players";
+import { useStoreTheme } from "@/store/theme";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -10,9 +10,10 @@ export default function GetWord() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const { getRandomPlayer, randomPlayer, players } = useStorePlayer();
 	const [wordIsVisible, setWordIsVisible] = useState(false);
-	const [food] = useState(foodsName[Math.floor(Math.random() * foodsName.length)]);
+	const { getRandomWord, randomWord } = useStoreTheme();
 
 	useEffect(() => {
+		getRandomWord();
 		getRandomPlayer();
 	}, []);
 
@@ -43,7 +44,7 @@ export default function GetWord() {
 							<View style={styles.wordContainer}>
 								<TransparentButtonComponent>
 									<Text style={styles.word}>
-										{players[currentIndex].name !== randomPlayer ? food : "Não sabe"}
+										{players[currentIndex].name !== randomPlayer ? randomWord : "Não sabe"}
 									</Text>
 								</TransparentButtonComponent>
 							</View>

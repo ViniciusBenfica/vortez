@@ -1,4 +1,5 @@
 import { theme } from "@/questions";
+import { useStoreTheme } from "@/store/theme";
 import { router } from "expo-router";
 import { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
@@ -7,6 +8,7 @@ import TransparentButtonComponent from "../components/transparentButton";
 
 export default function Theme() {
 	const [selectedThemeIndex, setSelectedThemeIndex] = useState<number>(-1);
+	const { setTheme } = useStoreTheme();
 
 	return (
 		<ContainerComponent
@@ -17,9 +19,23 @@ export default function Theme() {
 			<View style={styles.themeContainer}>
 				{theme.map((theme, index) => (
 					<View key={index} style={styles.themeRow}>
-						<TransparentButtonComponent action={() => setSelectedThemeIndex(index)} disable={false} selected={selectedThemeIndex == index}>
+						<TransparentButtonComponent
+							action={() => {
+								setSelectedThemeIndex(index);
+								setTheme(theme?.title);
+							}}
+							disable={false}
+							selected={selectedThemeIndex === index}
+						>
 							<Image style={styles.image} source={theme.icon} />
-							<Text style={[styles.themeTitle, selectedThemeIndex == index ? styles.themeSelected : null]}>{theme.title}</Text>
+							<Text
+								style={[
+									styles.themeTitle,
+									selectedThemeIndex === index ? styles.themeSelected : null,
+								]}
+							>
+								{theme.title}
+							</Text>
 						</TransparentButtonComponent>
 					</View>
 				))}
@@ -63,5 +79,5 @@ const styles = StyleSheet.create({
 		width: 70,
 		height: 70,
 		marginBottom: 8,
-	}
+	},
 });

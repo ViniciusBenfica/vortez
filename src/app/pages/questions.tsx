@@ -1,5 +1,5 @@
-import { foodsQuestions } from "@/questions/foods";
 import { useStorePlayer } from "@/store/players";
+import { useStoreTheme } from "@/store/theme";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -8,16 +8,10 @@ import ContainerComponent from "../components/container";
 export default function Questions() {
 	const { players } = useStorePlayer();
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [questions, setQuestions] = useState([...foodsQuestions]);
-	const [currentQuestion, setCurrentQuestion] = useState("");
-
-	const getRandomQuestion = () => {
-		const initialQuestionIndex = Math.floor(Math.random() * questions.length);
-		setQuestions(questions.filter((_, index) => index !== initialQuestionIndex));
-		setCurrentQuestion(questions[initialQuestionIndex]);
-	};
+	const { getQuestions, getRandomQuestion, currentQuestion } = useStoreTheme();
 
 	useEffect(() => {
+		getQuestions();
 		getRandomQuestion();
 	}, []);
 

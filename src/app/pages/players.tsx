@@ -1,18 +1,12 @@
 import InputComponent from "@/app/components/input";
 import { useStorePlayer } from "@/store/players";
 import { router } from "expo-router";
-import React, { useEffect } from "react";
+import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import ContainerComponent from "../components/container";
 
 export default function Players() {
-	const { players, updatePlayer, removePlayer, addPlayer } = useStorePlayer();
-
-	useEffect(() => {
-		if (players[players.length - 1].name !== "") {
-			addPlayer();
-		}
-	}, [players[players.length - 1].name]);
+	const { players, updatePlayer, removePlayer } = useStorePlayer();
 
 	return (
 		<ContainerComponent
@@ -23,16 +17,16 @@ export default function Players() {
 				<Text style={styles.title}>Lista de jogadores</Text>
 				<ScrollView style={styles.playerContainer}>
 					{players.map((player, index) => (
-						<View key={index} style={styles.playerRow}>
+						<View key={player.id} style={styles.playerRow}>
 							{players.length - 1 === index ? (
 								<InputComponent
 									placeholder={"Novo jogador"}
-									value={player.name}
+									value={player?.name}
 									onChangeText={(text) => updatePlayer(text, index)}
 								/>
 							) : (
 								<InputComponent
-									value={player.name}
+									value={player?.name}
 									onChangeText={(text) => updatePlayer(text, index)}
 									onPressIcon={() => removePlayer(index)}
 									icon={require("../../../assets/icons/bin.svg")}

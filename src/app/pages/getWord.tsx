@@ -36,7 +36,7 @@ export default function GetWord() {
 			textFooterButton={wordIsVisible ? "Continuar" : "Sim, sou eu!"}
 		>
 			<View style={styles.container}>
-				<Text style={styles.title}>{`Voce é o ${players[currentIndex].name}?`}</Text>
+				<Text style={styles.title}>{`Voce é o ${players[currentIndex]?.name}?`}</Text>
 				{wordIsVisible && (
 					<>
 						<View style={styles.containerWord}>
@@ -44,7 +44,7 @@ export default function GetWord() {
 							<View style={styles.wordContainer}>
 								<TransparentButtonComponent>
 									<Text style={styles.word}>
-										{players[currentIndex].name !== randomPlayer ? randomWord : "Não sabe"}
+										{players[currentIndex]?.name !== randomPlayer ? randomWord : "Não sabe"}
 									</Text>
 								</TransparentButtonComponent>
 							</View>

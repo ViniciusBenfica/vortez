@@ -29,7 +29,7 @@ export default function Questions() {
 			<View style={styles.container}>
 				<View style={styles.nameContainer}>
 					<Text style={styles.title}>Pergunta para</Text>
-					<Text style={styles.title}>{players[currentIndex].name}</Text>
+					<Text style={styles.title}>{players[currentIndex]?.name}</Text>
 				</View>
 				<View style={styles.questionContainer}>
 					<Text style={styles.question}>{currentQuestion}</Text>

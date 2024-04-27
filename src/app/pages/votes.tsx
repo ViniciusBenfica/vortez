@@ -24,7 +24,7 @@ export default function Votes() {
 			showFooterButton={selectedPlayerIndex > -1}
 		>
 			<View style={styles.container}>
-				<Text style={styles.title}>{players[currentIndex].name}</Text>
+				<Text style={styles.title}>{players[currentIndex]?.name}</Text>
 				<Text style={styles.title}>Quem não sabe a palavra?</Text>
 				<ScrollView showsVerticalScrollIndicator={false} style={styles.playerContainer}>
 					{players.slice(0, -1).map((player, index) => {
@@ -34,7 +34,7 @@ export default function Votes() {
 									<ButtonComponent
 										key={index}
 										selected={selectedPlayerIndex === index}
-										text={player.name}
+										text={player?.name}
 										action={() => setSelectedPlayerIndex(index)}
 									/>
 								</View>

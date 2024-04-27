@@ -2,10 +2,9 @@ import { create } from "zustand";
 
 interface IPlayers {
 	players: { id: number; name: string; votes: number }[];
+	randomPlayer: string;
 	updatePlayer: (text: string, index: number) => void;
 	removePlayer: (index: number) => void;
-	addPlayer: () => void;
-	randomPlayer: string;
 	getRandomPlayer: () => void;
 	votedPlayer: (index: number) => void;
 	clearVotes: () => void;
@@ -29,6 +28,13 @@ export const useStorePlayer = create<IPlayers>((set) => ({
 			}
 			const newPlayers = [...oldState.players];
 			newPlayers[index].name = text;
+			if (oldState.players[oldState.players.length - 1]?.name !== "") {
+				newPlayers.push({
+					id: oldState.players[oldState.players.length - 1].id + 1,
+					name: "",
+					votes: 0,
+				});
+			}
 			return { players: newPlayers };
 		});
 	},
@@ -38,25 +44,11 @@ export const useStorePlayer = create<IPlayers>((set) => ({
 			return { players: newPlayers };
 		});
 	},
-	addPlayer: () => {
-		set((oldState) => {
-			return {
-				players: [
-					...oldState.players,
-					{
-						id: oldState.players[oldState.players.length - 1].id + 1,
-						name: "",
-						votes: 0,
-					},
-				],
-			};
-		});
-	},
 	getRandomPlayer: () => {
 		set((oldState) => {
 			const randomPlayer =
-				oldState.players[Math.floor(Math.random() * (oldState.players.length - 1))].name;
-			return { randomPlayer: randomPlayer };
+				oldState.players[Math.floor(Math.random() * (oldState.players.length - 1))]?.name;
+			return { randomPlayer };
 		});
 	},
 	clearVotes: () => {

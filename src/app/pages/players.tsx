@@ -1,16 +1,20 @@
 import InputComponent from "@/app/components/input";
 import { useStorePlayer } from "@/store/players";
 import { router } from "expo-router";
-import React from "react";
+import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import ContainerComponent from "../components/container";
 
 export default function Players() {
+	const [errorQuantity, setErrorQuantity] = useState(false);
 	const { players, updatePlayer, removePlayer } = useStorePlayer();
 
 	return (
 		<ContainerComponent
-			actionFooterButton={() => router.push("/pages/theme")}
+			actionFooterButton={() => {
+				if(players.length > 3) return router.push("/pages/theme")
+				setErrorQuantity(true)
+			}}
 			textFooterButton="Começar"
 		>
 			<View style={styles.container}>
@@ -35,6 +39,11 @@ export default function Players() {
 						</View>
 					))}
 				</ScrollView>
+				{errorQuantity &&
+					<Text style={styles.error}>
+						Precisa ter pelo menos 3 jogadores
+					</Text>
+				}
 			</View>
 		</ContainerComponent>
 	);
@@ -48,6 +57,11 @@ const styles = StyleSheet.create({
 		fontFamily: "BebasNeue_400Regular",
 		fontSize: 48,
 		color: "white",
+	},
+	error: {
+		fontFamily: "BebasNeue_400Regular",
+		fontSize: 28,
+		color: "#D59018",
 	},
 	playerContainer: {
 		width: "100%",

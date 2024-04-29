@@ -8,11 +8,13 @@ import TransparentButtonComponent from "../components/transparentButton";
 
 export default function Theme() {
 	const [selectedThemeIndex, setSelectedThemeIndex] = useState<number>(-1);
-	const { setTheme } = useStoreTheme();
+	const { setTheme, selectTheme } = useStoreTheme();
 
 	return (
 		<ContainerComponent
-			actionFooterButton={() => router.push("/pages/getWord")}
+			actionFooterButton={() => {
+				if (selectTheme) return router.push("/pages/getWord");
+			}}
 			textFooterButton="Começar"
 		>
 			<Text style={styles.title}>Selecionar tema</Text>

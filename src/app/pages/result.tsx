@@ -7,7 +7,7 @@ import InputComponent from "../components/input";
 
 export default function Result() {
 	const { players, clearVotes, randomPlayer } = useStorePlayer();
-	const { randomWord } = useStoreTheme();
+	const { randomWord, cleanTheme } = useStoreTheme();
 
 	const findTopVotedPlayers = () => {
 		const maxVotes = Math.max(...players.map((player) => player.votes));
@@ -21,8 +21,9 @@ export default function Result() {
 	return (
 		<ContainerComponent
 			actionFooterButton={() => {
-				router.push("/");
 				clearVotes();
+				cleanTheme();
+				router.push("/");
 			}}
 			textFooterButton="Reiniciar jogo"
 		>

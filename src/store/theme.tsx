@@ -11,6 +11,7 @@ interface IThemes {
 	getRandomWord: () => void;
 	getQuestions: () => void;
 	getRandomQuestion: () => void;
+	cleanTheme: () => void;
 }
 
 export const useStoreTheme = create<IThemes>((set) => ({
@@ -46,6 +47,11 @@ export const useStoreTheme = create<IThemes>((set) => ({
 			const questions = oldState.questions.filter((_, index) => index !== questionIndex);
 			const currentQuestion = oldState.questions[questionIndex];
 			return { currentQuestion, questions };
+		});
+	},
+	cleanTheme: () => {
+		set((oldState) => {
+			return { selectTheme: "" };
 		});
 	},
 }));

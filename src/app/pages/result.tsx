@@ -9,6 +9,15 @@ export default function Result() {
 	const { players, clearVotes, randomPlayer } = useStorePlayer();
 	const { randomWord } = useStoreTheme();
 
+	const findTopVotedPlayers = () => {
+		const maxVotes = Math.max(...players.map((player) => player.votes));
+		const topPlayers = players.filter((player) => player.votes === maxVotes);
+		if (topPlayers.length === 1) {
+			return topPlayers[0].name;
+		}
+		return topPlayers.map((player) => player.name).join(" / ");
+	};
+
 	return (
 		<ContainerComponent
 			actionFooterButton={() => {
@@ -19,13 +28,8 @@ export default function Result() {
 		>
 			<View style={styles.container}>
 				<View style={styles.resultContainer}>
-					<Text style={styles.title}>O mais votado foi </Text>
-					<InputComponent
-						editable={false}
-						value={
-							players.reduce((prev, current) => (prev.votes > current.votes ? prev : current))?.name
-						}
-					/>
+					<Text style={styles.title}>O mais votado foi</Text>
+					<InputComponent editable={false} value={findTopVotedPlayers()} />
 				</View>
 				<View style={styles.resultContainer}>
 					<Text style={styles.title}>Quem não sabia a palavra</Text>

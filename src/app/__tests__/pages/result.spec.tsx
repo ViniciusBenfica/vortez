@@ -21,6 +21,12 @@ jest.mock("@/store/players", () => ({
 	}),
 }));
 
+jest.mock("@/store/theme", () => ({
+	useStoreTheme: () => ({
+		cleanTheme: jest.fn(),
+	}),
+}));
+
 describe("Result", () => {
 	it("renders correctly", () => {
 		const { getByText } = render(<Result />);
@@ -40,7 +46,7 @@ describe("Result", () => {
 
 	it("navigates on button press", () => {
 		const { getByText } = render(<Result />);
-		fireEvent.press(getByText("Jogar novamente"));
+		fireEvent.press(getByText("Reiniciar jogo"));
 		expect(router.push).toHaveBeenCalledWith("/");
 	});
 });

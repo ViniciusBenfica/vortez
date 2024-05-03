@@ -10,18 +10,21 @@ jest.mock("@/store/players", () => ({
 	useStorePlayer: () => ({
 		players: mockPlayers,
 		updatePlayer: jest.fn((name, index) => {
-			mockPlayers[index].name = name;
+			if (name === "") {
+				mockPlayers = mockPlayers.filter((_, i) => i !== index);
+			} else {
+				mockPlayers[index].name = name;
+				if (mockPlayers[mockPlayers.length - 1]?.name !== "") {
+					mockPlayers.push({
+						id: mockPlayers[mockPlayers.length - 1].id + 1,
+						name: "",
+						votes: 0,
+					});
+				}
+			}
 		}),
 		removePlayer: jest.fn((index) => {
 			mockPlayers = mockPlayers.filter((_, i) => i !== index);
-		}),
-		addPlayer: jest.fn(() => {
-			const newPlayer = {
-				id: mockPlayers[mockPlayers.length - 1].id + 1,
-				name: "",
-				votes: 0,
-			};
-			mockPlayers = [...mockPlayers, newPlayer];
 		}),
 	}),
 }));
@@ -67,23 +70,37 @@ describe("Players", () => {
 		fireEvent.changeText(input[0], "John Doe");
 		rerender(<Players />);
 
-		await waitFor(async () => {
-			const { findAllByPlaceholderText } = render(<Players />);
-			const input = await findAllByPlaceholderText("Novo jogador");
-			fireEvent.changeText(input[0], "Jane Doe");
-		});
-		rerender(<Players />);
-
 		const iconButton = getByTestId("input-icon");
+
 		fireEvent.press(iconButton);
 
-		expect(useStorePlayer().players[0].name).toBe("Jane Doe");
+		expect(useStorePlayer().players.length).toBe(1);
+		expect(useStorePlayer().players[0].name).toBe("");
 	});
 
-	it("navigates to /pages/getWord when the start button is pressed", () => {
+	it("error when try navigates to /pages/theme when the start button is pressed", () => {
 		const { getByText } = render(<Players />);
 		const startButton = getByText("Começar");
 		fireEvent.press(startButton);
-		expect(router.push).toHaveBeenCalledWith("/pages/getWord");
+		expect(router.push).not.toHaveBeenCalledWith("/pages/theme");
+		const errorMessage = getByText("Precisa ter pelo menos 3 jogadores");
+		expect(errorMessage).toBeTruthy();
+	});
+
+	it("navigates to /pages/theme when the start button is pressed if have more than 3 players", () => {
+		const { getByText, rerender } = render(<Players />);
+		mockPlayers = [
+			{ id: 0, name: "", votes: 0 },
+			{ id: 1, name: "", votes: 0 },
+			{ id: 2, name: "", votes: 0 },
+			{ id: 3, name: "", votes: 0 },
+			{ id: 4, name: "", votes: 0 },
+		];
+
+		rerender(<Players />);
+		const startButton = getByText("Começar");
+		fireEvent.press(startButton);
+
+		expect(router.push).toHaveBeenCalledWith("/pages/theme");
 	});
 });

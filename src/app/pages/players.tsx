@@ -12,8 +12,8 @@ export default function Players() {
 	return (
 		<ContainerComponent
 			actionFooterButton={() => {
-				if(players.length > 3) return router.push("/pages/theme")
-				setErrorQuantity(true)
+				if (players.length > 3) return router.push("/pages/theme");
+				setErrorQuantity(true);
 			}}
 			textFooterButton="Começar"
 		>
@@ -39,11 +39,7 @@ export default function Players() {
 						</View>
 					))}
 				</ScrollView>
-				{errorQuantity &&
-					<Text style={styles.error}>
-						Precisa ter pelo menos 3 jogadores
-					</Text>
-				}
+				{errorQuantity && <Text style={styles.error}>Precisa ter pelo menos 3 jogadores</Text>}
 			</View>
 		</ContainerComponent>
 	);

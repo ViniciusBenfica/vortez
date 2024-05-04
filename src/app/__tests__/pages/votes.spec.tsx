@@ -15,10 +15,6 @@ jest.mock("expo-router", () => ({
 	},
 }));
 
-jest.mock("@/questions/foods", () => ({
-	foodsName: ["banana"],
-}));
-
 jest.mock("@/store/players", () => ({
 	useStorePlayer: () => ({
 		votedPlayer: jest.fn((index) => {

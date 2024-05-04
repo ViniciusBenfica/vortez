@@ -6,6 +6,14 @@ import React from "react";
 
 let mockRandomPlayer = "Jogador 3";
 let mockPlayers = [{ name: "Jogador 1" }, { name: "Jogador 2" }];
+const mockThemes = [
+	{
+		title: "Comida",
+		theme: ["testeTheme"],
+		icon: require("../../../../assets/icons/food.png"),
+		questions: ["testeQuestion"],
+	},
+];
 
 jest.mock("expo-router", () => ({
 	router: {
@@ -13,8 +21,12 @@ jest.mock("expo-router", () => ({
 	},
 }));
 
-jest.mock("@/questions/foods", () => ({
-	foodsName: ["banana"],
+jest.mock("@/store/theme", () => ({
+	useStoreTheme: () => ({
+		themes: mockThemes,
+		getRandomWord: jest.fn(),
+		randomWord: "banana",
+	}),
 }));
 
 jest.mock("@/store/players", () => ({

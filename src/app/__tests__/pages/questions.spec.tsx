@@ -3,14 +3,28 @@ import { fireEvent, render } from "@testing-library/react-native";
 import { router } from "expo-router";
 import React from "react";
 
+const mockThemes = [
+	{
+		title: "Comida",
+		theme: ["testeTheme"],
+		icon: require("../../../../assets/icons/food.png"),
+		questions: ["testeQuestion"],
+	},
+];
+
 jest.mock("expo-router", () => ({
 	router: {
 		push: jest.fn(),
 	},
 }));
 
-jest.mock("@/questions/foods", () => ({
-	foodsQuestions: ["Qual sua comida favorita?"],
+jest.mock("@/store/theme", () => ({
+	useStoreTheme: () => ({
+		themes: mockThemes,
+		getQuestions: jest.fn(),
+		getRandomQuestion: jest.fn(),
+		currentQuestion: "Qual sua comida favorita?",
+	}),
 }));
 
 jest.mock("@/store/players", () => ({

@@ -6,6 +6,7 @@ type IContainerProps = {
 	actionFooterButton: () => void;
 	textFooterButton: string;
 	showFooterButton?: boolean;
+	withBackground?: boolean;
 };
 
 export default function ContainerComponent({
@@ -13,12 +14,15 @@ export default function ContainerComponent({
 	actionFooterButton,
 	textFooterButton,
 	showFooterButton = true,
+	withBackground = true,
 }: IContainerProps) {
 	return (
 		<View style={styles.container}>
-			<View style={styles.containerImage}>
-				<Image style={styles.image} source={require("../../../assets/images/logo.webp")} />
-			</View>
+			{withBackground && (
+				<View style={styles.containerImage}>
+					<Image style={styles.image} source={require("../../../assets/images/logo.webp")} />
+				</View>
+			)}
 			<View style={styles.body}>
 				{children}
 				{showFooterButton && (
@@ -35,6 +39,8 @@ const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		height: "100%",
+		alignItems: "center",
+		justifyContent: "center",
 		backgroundColor: "#01386B",
 	},
 	containerImage: {

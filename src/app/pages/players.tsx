@@ -48,6 +48,7 @@ export default function Players() {
 const styles = StyleSheet.create({
 	container: {
 		alignItems: "center",
+		justifyContent: "center",
 	},
 	title: {
 		fontFamily: "BebasNeue_400Regular",

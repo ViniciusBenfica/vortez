@@ -20,7 +20,7 @@ export default function ContainerComponent({
 		<View style={styles.container}>
 			{withBackground && (
 				<View style={styles.containerImage}>
-					<Image style={styles.image} source={require("../../../assets/images/logo.webp")} />
+					<Image style={styles.image} source={require("../../../assets/images/logo.png")} />
 				</View>
 			)}
 			<View style={styles.body}>

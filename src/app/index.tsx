@@ -13,7 +13,7 @@ export default function App() {
 		>
 			<View style={styles.body}>
 				<Image
-					source={require("../../assets/images/logo.webp")}
+					source={require("../../assets/images/logo.png")}
 					style={styles.image}
 					testID="logo-image"
 				/>

@@ -23,16 +23,16 @@ Instale as dependências:
 pnpm intall
 ```
 
-Caso queira rodar no navegador use o comando:
-
-```
-pnpm web
-```
-
 Para executar no emulador android use o comando:
 
 ```
 pnpm android
+```
+
+Caso queira rodar no navegador use o comando:
+
+```
+pnpm web
 ```
 
 ## Testes

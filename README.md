@@ -40,7 +40,7 @@ pnpm android
 Os testes unitários foram implementados utilizando o Jest. Para executar os testes, utilize o comando:
 
 ```
-pnpm test
+pnpm jest
 ```
 
 ## Imagens do projeto

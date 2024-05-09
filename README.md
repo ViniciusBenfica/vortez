@@ -11,13 +11,13 @@ O sistema foi desenvolvido utilizando a versão `20.11.1` do `Node.js` e a vers�
 
 ## Como rodar a aplicação
 
-No terminal, clone o projeto e instale as bibliotecas:
+No terminal, clone o projeto:
 
 ```
 git clone https://github.com/ViniciusBenfica/vortez.git
 ```
 
-E instale as bibliotecas:
+Instale as dependências:
 
 ```
 pnpm intall
